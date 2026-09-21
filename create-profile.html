@@ -12,21 +12,99 @@
 
   <nav class="navbar">
     <div class="logo">College<span>Card</span></div>
-    <a href="index.html" class="btn btn-secondary">Back</a>
+    <a href="index.html" class="btn btn-secondary">Home</a>
   </nav>
 
-  <section class="hero">
-    <h1>Create your profile</h1>
-    <p>This is where your form goes — build this in Phase 2 (JavaScript Fundamentals). Start with plain HTML inputs first, then wire up JS to read and use them.</p>
-  </section>
+  <!-- ================= FORM ================= -->
+  <div class="form-wrap">
+    <div class="form-card">
+      <h1>Create your CollegeCard</h1>
+      <p class="form-subtitle">Fill this in — your preview appears below once you submit.</p>
 
-  <!--
-    TODO (Phase 2):
-    - Add <form> with inputs: name, college, branch, year, bio, skills, github, linkedin, instagram
-    - Add a submit button
-    - In script.js: read values with querySelector, build a student object,
-      log it to console first before doing anything else with it.
-  -->
+      <form id="profile-form" novalidate>
 
+        <div class="field">
+          <label for="name">Full name *</label>
+          <input type="text" id="name" required>
+        </div>
+
+        <div class="field">
+          <label for="college">College *</label>
+          <input type="text" id="college" required>
+        </div>
+
+        <div class="field">
+          <label for="branch">Branch</label>
+          <input type="text" id="branch">
+        </div>
+
+        <div class="field">
+          <label for="year">Year</label>
+          <select id="year">
+            <option value="">Select year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="bio">Short bio</label>
+          <textarea id="bio" rows="3" placeholder="About you"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="skills">Skills (comma separated)</label>
+          <input type="text" id="skills" placeholder="Python, JavaScript, Flask">
+        </div>
+
+        <div class="field">
+          <label for="github">GitHub URL</label>
+          <input type="url" id="github" placeholder="https://github.com/yourname">
+        </div>
+
+        <div class="field">
+          <label for="linkedin">LinkedIn URL</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname">
+        </div>
+
+        <div class="field">
+          <label for="instagram">Instagram URL</label>
+          <input type="url" id="instagram" placeholder="https://instagram.com/yourname">
+        </div>
+
+        <p id="form-error" class="error-text"></p>
+
+        <button type="submit" class="btn btn-primary btn-block">Create Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= LIVE PREVIEW ================= -->
+  <!-- Same markup/classes as profile.html so the preview matches the real page exactly -->
+  <div class="profile-wrap hidden" id="profile-preview">
+    <div class="profile-card">
+
+      <div class="profile-photo" id="preview-photo"></div>
+
+      <h1 id="preview-name"></h1>
+      <p class="profile-meta" id="preview-meta"></p>
+
+      <p class="profile-bio" id="preview-bio"></p>
+
+      <div class="skills" id="preview-skills"></div>
+
+      <div class="social-links" id="preview-social"></div>
+
+      <div class="qr-area">
+        QR code will render here (Phase 8)
+      </div>
+
+    </div>
+    <p class="preview-hint">This is a live preview only — nothing is saved yet. Persistence comes in Phase 3.</p>
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
