@@ -1,0 +1,327 @@
+/* ===========================================
+   CollegeCard — Design Tokens
+   =========================================== */
+:root {
+  /* Color */
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --ink: #1B1F24;
+  --ink-soft: #5B6270;
+  --line: #E4E4DE;
+  --accent: #2F5DFF;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #EEF1FF;
+  --highlight: #FFB800;
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --max-width: 480px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+/* ===========================================
+   Navbar
+   =========================================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line);
+}
+
+.navbar .logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.navbar .logo span { color: var(--accent); }
+
+/* ===========================================
+   Buttons
+   =========================================== */
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn-block { display: block; width: 100%; }
+
+/* ===========================================
+   Hero (index.html)
+   =========================================== */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  text-align: left;
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+}
+
+.hero p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-3);
+}
+
+/* ===========================================
+   Steps (Create → Share → Connect)
+   =========================================== */
+.steps {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.step {
+  display: flex;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step h3 { font-size: 1rem; margin-bottom: 2px; }
+.step p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
+
+/* ===========================================
+   Profile Card (profile.html)
+   =========================================== */
+.profile-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3);
+}
+
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  text-align: center;
+}
+
+.profile-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  margin: 0 auto var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.profile-card h1 { font-size: 1.4rem; }
+
+.profile-meta {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+.profile-bio {
+  margin-top: var(--space-2);
+  font-size: 0.95rem;
+  color: var(--ink);
+  text-align: left;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.skill-tag {
+  background: #FFF7E0;
+  color: #8A6300;
+  border: 1px solid var(--highlight);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.qr-area {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+.profile-actions {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ===========================================
+   Form (create-profile.html)
+   =========================================== */
+.form-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-3);
+}
+
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.form-card h1 { font-size: 1.4rem; margin-bottom: 4px; }
+
+.form-subtitle {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0 0 var(--space-3);
+}
+
+.field { margin-bottom: var(--space-2); }
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.field textarea { resize: vertical; }
+
+.error-text {
+  color: #C0392B;
+  font-size: 0.85rem;
+  min-height: 1.1em;
+  margin: var(--space-1) 0 0;
+}
+
+/* ===========================================
+   Utility
+   =========================================== */
+.hidden { display: none; }
+
+.preview-hint {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  margin-top: var(--space-2);
+}
+
+/* ===========================================
+   Responsive
+   =========================================== */
+@media (min-width: 600px) {
+  .hero h1 { font-size: 2.6rem; }
+}
