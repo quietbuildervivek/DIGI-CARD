@@ -2,58 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vivek Sharma — CollegeCard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My CollegeCard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="wrap">
 
-  <nav class="navbar">
-    <div class="logo">College<span>Card</span></div>
-    <a href="index.html" class="btn btn-secondary">Edit</a>
-  </nav>
-
-  <div class="profile-wrap">
-    <div class="profile-card">
-
-      <!-- Placeholder photo: initials, since no real image yet -->
-      <div class="profile-photo">VS</div>
-
-      <h1>Vivek Sharma</h1>
-      <p class="profile-meta">Computer Science · 1st Year<br>GH raisoni
-         College of Engineering</p>
-
-      <p class="profile-bio">
-        Building small web projects and figuring out backend development.
-        Always up for a coffee chat about startups or DSA.
-      </p>
-
-      <div class="skills">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">Flask</span>
-        <span class="skill-tag">UI Design</span>
-      </div>
-
-      <div class="social-links">
-        <a href="#">GitHub</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">Instagram</a>
-      </div>
-
-      <div class="qr-area">
-        QR code will render here (Phase 8)
-      </div>
-
-      <div class="profile-actions">
-        <a href="#" class="btn btn-primary btn-block">Save Contact</a>
-        <a href="#" class="btn btn-secondary btn-block">Share Profile</a>
-      </div>
-
-    </div>
+  <div class="topbar">
+    <a class="mark" href="index.html" style="text-decoration:none;">College<span>Card</span></a>
+    <a class="link" href="create-profile.html">Edit →</a>
   </div>
 
+  <div id="profileArea"><!-- filled by script.js --></div>
+
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const profile = CollegeCard.load();
+    const area = document.getElementById('profileArea');
+
+    if (!profile) {
+      area.innerHTML = `
+        <div class="empty">
+          <p>No profile saved on this browser yet.</p>
+          <a class="primary-link" href="create-profile.html">Create your card</a>
+        </div>`;
+      return;
+    }
+
+    const skillsHtml = profile.skills.length
+      ? `<div class="skills">${profile.skills.map(s => `<span class="skill-chip">${CollegeCard.escape(s)}</span>`).join('')}</div>`
+      : '';
+
+    const socialLinks = [
+      { key: 'github', label: 'GitHub' },
+      { key: 'linkedin', label: 'LinkedIn' },
+      { key: 'instagram', label: 'Instagram' },
+    ].filter(s => profile[s.key]);
+
+    const socialsHtml = socialLinks.length
+      ? `<div class="socials">${socialLinks.map(s => `<a href="${CollegeCard.escape(profile[s.key])}" target="_blank" rel="noopener">${s.label}</a>`).join('')}</div>`
+      : '';
+
+    area.innerHTML = `
+      <div class="id-card">
+        <div class="stripe"></div>
+        <div class="id-eyebrow">STUDENT ID · ${CollegeCard.escape(profile.branch)} '${CollegeCard.escape(profile.year)}</div>
+        <div class="id-name">${CollegeCard.escape(profile.name)}</div>
+        <div class="id-meta">${CollegeCard.escape(profile.college)}</div>
+        ${profile.bio ? `<div class="id-bio">${CollegeCard.escape(profile.bio)}</div>` : ''}
+        ${skillsHtml}
+        <div class="id-number">ID — ${CollegeCard.escape(profile.id)}</div>
+      </div>
+
+      ${socialsHtml}
+
+      <div class="qr-note">
+        QR code goes here in Phase 8 — it will point to this profile's public URL once the backend exists.
+      </div>
+
+      <div class="actions">
+        <a href="create-profile.html">Edit profile</a>
+        <button class="danger" id="clearBtn" type="button">Delete profile</button>
+      </div>
+    `;
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      if (confirm('Delete this profile from your browser? This cannot be undone.')) {
+        CollegeCard.clear();
+        window.location.reload();
+      }
+    });
+  });
+</script>
 </body>
 </html>

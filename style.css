@@ -1,327 +1,389 @@
-/* ===========================================
-   CollegeCard — Design Tokens
-   =========================================== */
+/* ---------------------------------------------------
+   CollegeCard — shared styles
+   Design concept: a physical campus ID card, digitized.
+   Ink navy + badge gold, monospace ID numbers, die-cut card corners.
+--------------------------------------------------- */
+
 :root {
-  /* Color */
-  --bg: #FAFAF7;
-  --surface: #FFFFFF;
-  --ink: #1B1F24;
-  --ink-soft: #5B6270;
-  --line: #E4E4DE;
-  --accent: #2F5DFF;
-  --accent-ink: #FFFFFF;
-  --accent-soft: #EEF1FF;
-  --highlight: #FFB800;
-
-  /* Type */
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Inter', sans-serif;
-
-  /* Layout */
+  --ink: #14213d;
+  --ink-soft: #2c3a63;
+  --paper: #f7f8fa;
+  --card: #ffffff;
+  --gold: #ffb703;
+  --gold-deep: #e29500;
+  --muted: #6b7280;
+  --line: #e3e6ec;
+  --good: #2a9d8f;
   --radius: 14px;
-  --radius-sm: 8px;
-  --max-width: 480px;
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 40px;
+  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
 * { box-sizing: border-box; }
 
-body {
+html, body {
   margin: 0;
-  background: var(--bg);
+  padding: 0;
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-body);
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 { font-family: var(--font-display); margin: 0; }
+a { color: inherit; }
 
-a { color: inherit; text-decoration: none; }
+.wrap {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
 
-img { max-width: 100%; display: block; }
+/* ---------- top bar ---------- */
 
-/* ===========================================
-   Navbar
-   =========================================== */
-.navbar {
+.topbar {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  padding: var(--space-2) var(--space-3);
+  margin-bottom: 28px;
+}
+
+.topbar .mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.topbar .mark span {
+  color: var(--gold-deep);
+}
+
+.topbar a.link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
   border-bottom: 1px solid var(--line);
 }
 
-.navbar .logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.2rem;
-}
+.topbar a.link:hover { color: var(--ink); border-color: var(--ink); }
 
-.navbar .logo span { color: var(--accent); }
+/* ---------- landing page ---------- */
 
-/* ===========================================
-   Buttons
-   =========================================== */
-.btn {
-  display: inline-block;
-  padding: 13px 22px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.btn-secondary {
-  background: var(--surface);
-  color: var(--ink);
-  border: 1px solid var(--line);
-}
-
-.btn-block { display: block; width: 100%; }
-
-/* ===========================================
-   Hero (index.html)
-   =========================================== */
 .hero {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-4) var(--space-3) var(--space-3);
-  text-align: left;
+  margin-bottom: 44px;
 }
 
-.hero h1 {
+.hero-title {
+  font-family: var(--font-display);
   font-size: 2.1rem;
   line-height: 1.15;
-  margin-bottom: var(--space-2);
+  margin: 10px 0 14px;
+  letter-spacing: -0.01em;
 }
 
-.hero p {
-  color: var(--ink-soft);
-  font-size: 1.05rem;
-  margin-bottom: var(--space-3);
+.hero-sub {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 40ch;
+  margin: 0 0 22px;
 }
 
-/* ===========================================
-   Steps (Create → Share → Connect)
-   =========================================== */
+a.primary-link.big {
+  display: inline-block;
+  padding: 13px 26px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+a.primary-link.big:hover { background: var(--ink-soft); }
+
 .steps {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-3);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
 }
 
 .step {
   display: flex;
-  gap: var(--space-2);
+  gap: 16px;
   align-items: flex-start;
 }
 
-.step-number {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold-deep);
+  border: 1px solid var(--line);
   border-radius: 50%;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-family: var(--font-display);
-  font-weight: 700;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.step h3 { font-size: 1rem; margin-bottom: 2px; }
-.step p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
-
-/* ===========================================
-   Profile Card (profile.html)
-   =========================================== */
-.profile-wrap {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-3);
+.step-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2px;
 }
 
-.profile-card {
-  background: var(--surface);
+.step-body {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- form ---------- */
+
+h1.page-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin: 0 0 6px;
+}
+
+p.page-sub {
+  color: var(--muted);
+  margin: 0 0 28px;
+  font-size: 0.95rem;
+}
+
+form.card-form {
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: var(--space-3);
-  text-align: center;
+  padding: 24px;
 }
 
-.profile-photo {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  background: var(--accent-soft);
-  margin: 0 auto var(--space-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--accent);
+.field {
+  margin-bottom: 18px;
 }
 
-.profile-card h1 { font-size: 1.4rem; }
-
-.profile-meta {
+.field label {
+  display: block;
+  font-size: 0.82rem;
   color: var(--ink-soft);
-  font-size: 0.95rem;
-  margin-top: 4px;
+  margin-bottom: 6px;
+  font-weight: 600;
 }
 
-.profile-bio {
-  margin-top: var(--space-2);
+.field .hint {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--ink);
-  text-align: left;
+  background: var(--paper);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+  border-color: var(--gold-deep);
+}
+
+.field textarea { resize: vertical; min-height: 70px; }
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+button.primary {
+  width: 100%;
+  padding: 13px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+button.primary:hover { background: var(--ink-soft); }
+
+.save-status {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--good);
+  margin-top: 10px;
+  min-height: 1.2em;
+}
+
+/* ---------- profile / ID card ---------- */
+
+.id-card {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 26px 24px 22px;
+  overflow: hidden;
+}
+
+.id-card::before {
+  /* die-cut corner notch, like a real badge */
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  background: var(--paper);
+  border-radius: 50%;
+}
+
+.id-card .stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--gold);
+}
+
+.id-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.id-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+
+.id-meta {
+  font-size: 0.92rem;
+  color: #c9d0e6;
+  margin-bottom: 16px;
+}
+
+.id-bio {
+  font-size: 0.92rem;
+  color: #e7eaf5;
+  margin-bottom: 16px;
+}
+
+.id-number {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--gold);
+  border-top: 1px dashed #3a4670;
+  padding-top: 12px;
+  margin-top: 4px;
 }
 
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin-top: var(--space-2);
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
-.skill-tag {
-  background: #FFF7E0;
-  color: #8A6300;
-  border: 1px solid var(--highlight);
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  font-weight: 600;
+.skill-chip {
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border: 1px solid #3a4670;
+  border-radius: 100px;
+  color: #dfe3f2;
 }
 
-.social-links {
+.socials {
   display: flex;
   gap: 10px;
-  justify-content: center;
-  margin-top: var(--space-3);
-  flex-wrap: wrap;
+  margin-top: 18px;
 }
 
-.social-links a {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.qr-area {
-  margin-top: var(--space-3);
-  padding: var(--space-3);
-  border: 1px dashed var(--line);
-  border-radius: var(--radius-sm);
-  color: var(--ink-soft);
-  font-size: 0.85rem;
-}
-
-.profile-actions {
-  margin-top: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* ===========================================
-   Form (create-profile.html)
-   =========================================== */
-.form-wrap {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--space-3);
-}
-
-.form-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: var(--space-3);
-}
-
-.form-card h1 { font-size: 1.4rem; margin-bottom: 4px; }
-
-.form-subtitle {
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  margin: 0 0 var(--space-3);
-}
-
-.field { margin-bottom: var(--space-2); }
-
-.field label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  padding: 11px 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  background: var(--bg);
-  color: var(--ink);
-}
-
-.field input:focus,
-.field select:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-.field textarea { resize: vertical; }
-
-.error-text {
-  color: #C0392B;
-  font-size: 0.85rem;
-  min-height: 1.1em;
-  margin: var(--space-1) 0 0;
-}
-
-/* ===========================================
-   Utility
-   =========================================== */
-.hidden { display: none; }
-
-.preview-hint {
+.socials a {
+  flex: 1;
   text-align: center;
-  color: var(--ink-soft);
-  font-size: 0.78rem;
-  margin-top: var(--space-2);
+  padding: 9px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--card);
 }
 
-/* ===========================================
-   Responsive
-   =========================================== */
-@media (min-width: 600px) {
-  .hero h1 { font-size: 2.6rem; }
+.socials a:hover { border-color: var(--ink); }
+
+.qr-note {
+  margin-top: 22px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.actions a, .actions button {
+  flex: 1;
+  text-align: center;
+  padding: 11px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: var(--font-body);
+}
+
+.actions .danger { color: #b3261e; border-color: #f1cfcd; }
+
+/* ---------- empty state ---------- */
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+}
+
+.empty a.primary-link {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 11px 20px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
 }

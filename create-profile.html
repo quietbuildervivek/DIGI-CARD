@@ -2,109 +2,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Profile — CollegeCard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create your CollegeCard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="wrap">
 
-  <nav class="navbar">
-    <div class="logo">College<span>Card</span></div>
-    <a href="index.html" class="btn btn-secondary">Home</a>
-  </nav>
-
-  <!-- ================= FORM ================= -->
-  <div class="form-wrap">
-    <div class="form-card">
-      <h1>Create your CollegeCard</h1>
-      <p class="form-subtitle">Fill this in — your preview appears below once you submit.</p>
-
-      <form id="profile-form" novalidate>
-
-        <div class="field">
-          <label for="name">Full name *</label>
-          <input type="text" id="name" required>
-        </div>
-
-        <div class="field">
-          <label for="college">College *</label>
-          <input type="text" id="college" required>
-        </div>
-
-        <div class="field">
-          <label for="branch">Branch</label>
-          <input type="text" id="branch">
-        </div>
-
-        <div class="field">
-          <label for="year">Year</label>
-          <select id="year">
-            <option value="">Select year</option>
-            <option value="1st Year">1st Year</option>
-            <option value="2nd Year">2nd Year</option>
-            <option value="3rd Year">3rd Year</option>
-            <option value="4th Year">4th Year</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label for="bio">Short bio</label>
-          <textarea id="bio" rows="3" placeholder="About you"></textarea>
-        </div>
-
-        <div class="field">
-          <label for="skills">Skills (comma separated)</label>
-          <input type="text" id="skills" placeholder="Python, JavaScript, Flask">
-        </div>
-
-        <div class="field">
-          <label for="github">GitHub URL</label>
-          <input type="url" id="github" placeholder="https://github.com/yourname">
-        </div>
-
-        <div class="field">
-          <label for="linkedin">LinkedIn URL</label>
-          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname">
-        </div>
-
-        <div class="field">
-          <label for="instagram">Instagram URL</label>
-          <input type="url" id="instagram" placeholder="https://instagram.com/yourname">
-        </div>
-
-        <p id="form-error" class="error-text"></p>
-
-        <button type="submit" class="btn btn-primary btn-block">Create Profile</button>
-      </form>
-    </div>
+  <div class="topbar">
+    <a class="mark" href="index.html" style="text-decoration:none;">College<span>Card</span></a>
+    <a class="link" href="profile.html">View profile →</a>
   </div>
 
-  <!-- ================= LIVE PREVIEW ================= -->
-  <!-- Same markup/classes as profile.html so the preview matches the real page exactly -->
-  <div class="profile-wrap hidden" id="profile-preview">
-    <div class="profile-card">
+  <h1 class="page-title" id="formTitle">Create your card</h1>
+  <p class="page-sub">This saves to your browser for now (localStorage) — Phase 4 moves it to a real server.</p>
 
-      <div class="profile-photo" id="preview-photo"></div>
+  <form class="card-form" id="profileForm">
+    <div class="field">
+      <label for="name">Full name</label>
+      <input type="text" id="name" required placeholder="Vivek Sharma">
+    </div>
 
-      <h1 id="preview-name"></h1>
-      <p class="profile-meta" id="preview-meta"></p>
-
-      <p class="profile-bio" id="preview-bio"></p>
-
-      <div class="skills" id="preview-skills"></div>
-
-      <div class="social-links" id="preview-social"></div>
-
-      <div class="qr-area">
-        QR code will render here (Phase 8)
+    <div class="row-2">
+      <div class="field">
+        <label for="college">College</label>
+        <input type="text" id="college" required placeholder="IIT Pune">
       </div>
-
+      <div class="field">
+        <label for="branch">Branch</label>
+        <input type="text" id="branch" required placeholder="CSE">
+      </div>
     </div>
-    <p class="preview-hint">This is a live preview only — nothing is saved yet. Persistence comes in Phase 3.</p>
-  </div>
 
-  <script src="js/script.js"></script>
+    <div class="field">
+      <label for="year">Year <span class="hint">e.g. 2027</span></label>
+      <input type="text" id="year" required placeholder="2027">
+    </div>
+
+    <div class="field">
+      <label for="bio">Short bio</label>
+      <textarea id="bio" maxlength="160" placeholder="What you build, study, or care about."></textarea>
+    </div>
+
+    <div class="field">
+      <label for="skills">Skills <span class="hint">comma-separated</span></label>
+      <input type="text" id="skills" placeholder="Python, Flask, React">
+    </div>
+
+    <div class="field">
+      <label for="github">GitHub URL <span class="hint">optional</span></label>
+      <input type="url" id="github" placeholder="https://github.com/yourname">
+    </div>
+
+    <div class="field">
+      <label for="linkedin">LinkedIn URL <span class="hint">optional</span></label>
+      <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname">
+    </div>
+
+    <div class="field">
+      <label for="instagram">Instagram URL <span class="hint">optional</span></label>
+      <input type="url" id="instagram" placeholder="https://instagram.com/yourname">
+    </div>
+
+    <button type="submit" class="primary" id="submitBtn">Save profile</button>
+    <div class="save-status" id="saveStatus"></div>
+  </form>
+</div>
+
+<script src="js/script.js"></script>
+<script>
+  // Page-specific wiring for the create/edit form.
+  document.addEventListener('DOMContentLoaded', () => {
+    const existing = CollegeCard.load();
+    const form = document.getElementById('profileForm');
+    const status = document.getElementById('saveStatus');
+    const title = document.getElementById('formTitle');
+
+    // If a profile already exists, we're editing — prefill the form.
+    if (existing) {
+      title.textContent = 'Edit your card';
+      document.getElementById('submitBtn').textContent = 'Update profile';
+      document.getElementById('name').value = existing.name || '';
+      document.getElementById('college').value = existing.college || '';
+      document.getElementById('branch').value = existing.branch || '';
+      document.getElementById('year').value = existing.year || '';
+      document.getElementById('bio').value = existing.bio || '';
+      document.getElementById('skills').value = (existing.skills || []).join(', ');
+      document.getElementById('github').value = existing.github || '';
+      document.getElementById('linkedin').value = existing.linkedin || '';
+      document.getElementById('instagram').value = existing.instagram || '';
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const profile = {
+        // keep the same id/createdAt across edits, otherwise mint new ones
+        id: existing ? existing.id : CollegeCard.makeId(),
+        createdAt: existing ? existing.createdAt : new Date().toISOString(),
+        name: document.getElementById('name').value.trim(),
+        college: document.getElementById('college').value.trim(),
+        branch: document.getElementById('branch').value.trim(),
+        year: document.getElementById('year').value.trim(),
+        bio: document.getElementById('bio').value.trim(),
+        skills: document.getElementById('skills').value
+                  .split(',').map(s => s.trim()).filter(Boolean),
+        github: document.getElementById('github').value.trim(),
+        linkedin: document.getElementById('linkedin').value.trim(),
+        instagram: document.getElementById('instagram').value.trim(),
+      };
+
+      CollegeCard.save(profile);
+
+      status.textContent = 'Saved. Redirecting to your profile…';
+      setTimeout(() => { window.location.href = 'profile.html'; }, 500);
+    });
+  });
+</script>
 </body>
 </html>

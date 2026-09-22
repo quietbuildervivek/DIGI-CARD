@@ -2,52 +2,59 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CollegeCard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CollegeCard — Your digital student ID</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<link hreflang="js/script.js">
 </head>
 <body>
+<div class="wrap">
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">College<span>Card</span></div>
-    <a href="create-profile.html" class="btn btn-secondary">Sign in</a>
-  </nav>
+  <div class="topbar">
+    <div class="mark">College<span>Card</span></div>
+    <a class="link" href="profile.html">View my card →</a>
+  </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Your college identity, in one link.</h1>
-    <p>Create a profile, get a QR code, and let people scan their way to your projects, socials and contact — no paper business cards required.</p>
-    <a href="create-profile.html" class="btn btn-primary btn-block">Create your profile</a>
-  </section>
+  <div class="hero">
+    <div class="id-eyebrow" style="color:var(--gold-deep)">DIGITAL STUDENT ID</div>
+    <h1 class="hero-title">One link. One QR.<br>Your whole student identity.</h1>
+    <p class="hero-sub">
+      Build a profile with your college, branch, skills and socials.
+      Get a link and a QR code. Hand it out instead of typing your Instagram handle at every event.
+    </p>
+    <a class="primary-link big" href="create-profile.html">Create your card</a>
+  </div>
 
-  <!-- 3-step explanation -->
-  <section class="steps">
+  <div class="steps">
     <div class="step">
-      <div class="step-number">1</div>
+      <div class="step-num">1</div>
       <div>
-        <h3>Create</h3>
-        <p>Add your name, college, branch, bio, skills and social links.</p>
+        <div class="step-title">Create</div>
+        <div class="step-body">Fill in your name, college, branch, bio, skills and social links.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-number">2</div>
+      <div class="step-num">2</div>
       <div>
-        <h3>Share</h3>
-        <p>Get a unique profile link and a QR code that always points to it.</p>
+        <div class="step-title">Share</div>
+        <div class="step-body">Get a profile link and QR code you can drop into a resume, lanyard or bio.</div>
       </div>
     </div>
     <div class="step">
-      <div class="step-number">3</div>
+      <div class="step-num">3</div>
       <div>
-        <h3>Connect</h3>
-        <p>Anyone who scans your QR sees your profile and can save your contact instantly.</p>
+        <div class="step-title">Connect</div>
+        <div class="step-body">Anyone who scans it sees your public profile and can reach you instantly.</div>
       </div>
     </div>
-  </section>
+  </div>
 
+  <div class="qr-note" style="margin-top:34px;">
+    This build is up through Phase 3: your profile is saved in this browser via <code>localStorage</code>.
+    Server accounts, public URLs and real QR codes arrive in later phases.
+  </div>
+
+</div>
 </body>
 </html>
